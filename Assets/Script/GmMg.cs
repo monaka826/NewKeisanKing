@@ -93,6 +93,7 @@ public class GmMg : MonoBehaviour
         if(CountDown <= 1.0f)
         {
             CountDownText.text = StartText;
+
             if(CountDown <= 0.0f)
             {
                 NowGameState = GameState.InGame;
@@ -154,30 +155,30 @@ public class GmMg : MonoBehaviour
     {
         GameTime -= Time.deltaTime;
         GameTimeText.text = GameTime.ToString().PadLeft(6);
-        
-            if (PubQ_Cnt < capacity && GameTime >= 0.0f) // // 格納した問題分、タイマーが0になるまで
+
+        if (PubQ_Cnt < capacity && GameTime >= 0.0f) // // 格納した問題分、タイマーが0になるまで
+        {
+            for (int i = 0; i < capacity; i++)
             {
-                // 一門ずつ問題を出題し、合っていたら次の問題、解答のクリアを行う
-                // 答える前にアンサーの初期値が0であるため、勝手に正解、不正解になってしまうので、そこを治す。
-                for (int i = 0; i < capacity; i++)
+                if (!ClearCheck)
                 {
                     Q_Text.text = InsertQ_Formura[PubQ_Cnt].ToString();
                     if (AnsCheck == true)
                     {
-                        if (Answer == InsertQ[PubQ_Cnt])
-                        {
-                            Correct();
-                        }
-
                         if (Answer != InsertQ[PubQ_Cnt] && !CorrectCheck)
                         {
                             NotCorrect();
                         }
-
+                        if (Answer == InsertQ[PubQ_Cnt])
+                        {
+                            Correct();
+                        }
                     }
                 }
-                CorrectCheck = false;
+
             }
+            // CorrectCheck = false;
+        }
             if (GameTime <= 0.0f)
             {
                 NotCorrect();
@@ -200,6 +201,11 @@ public class GmMg : MonoBehaviour
 
         CorrectText.text = Correct_Cnt.ToString() + count;
 
+        if(PubQ_Cnt == capacity)
+        {
+            ClearCheck = true;
+            NowGameState = GameState.EndGame;
+        }
     }
     void NotCorrect()
     {
