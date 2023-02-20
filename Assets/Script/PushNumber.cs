@@ -13,7 +13,7 @@ public class PushNumber : MonoBehaviour
     public Text Answer;
 
     string InsertAns;
-    public int FinalAns;
+    public float FinalAns;
 
     int PushCnt;
     int LimitCnt;
@@ -23,7 +23,7 @@ public class PushNumber : MonoBehaviour
         Gm_Mg = GameMg.GetComponent<GmMg>();
         Answer.text = "";
         PushCnt = 0;
-        LimitCnt = 6; // “ü—Í§ŒÀ
+        LimitCnt = 7; // “ü—Í§ŒÀ
     }
 
     // Update is called once per frame
@@ -35,7 +35,7 @@ public class PushNumber : MonoBehaviour
     {
         if (Gm_Mg.NowGameState == GmMg.GameState.InGame)
 
-            if (PushCnt < LimitCnt)
+            if (PushCnt < LimitCnt && Gm_Mg.AnsOK)
             {
                 Answer.text += number.text;
                 InsertAns = Answer.text;
@@ -49,7 +49,7 @@ public class PushNumber : MonoBehaviour
             if (PushCnt != 0)
             { 
                // FinalAns = int.Parse(InsertAns); // intŒ^‚É•ÏŠ·
-                int.TryParse(InsertAns, out FinalAns);
+                float.TryParse(InsertAns, out FinalAns);
                 Gm_Mg.SendAnswer(FinalAns);
                 PushCnt = 0;
             }
