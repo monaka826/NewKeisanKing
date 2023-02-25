@@ -34,6 +34,7 @@ public class GmMg : MonoBehaviour
 
     public List<float> InsertQ = new List<float>(capacity);
     public List<string> InsertQ_Formura = new List<string>(capacity);
+
     public enum GameState {
     StartUp,
     InGame,
