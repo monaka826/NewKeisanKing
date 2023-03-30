@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GmMg : MonoBehaviour
 {
+    #region íËêî
     const int capacity = 500;
   
     const int One = 1;
@@ -28,13 +29,12 @@ public class GmMg : MonoBehaviour
     const int TwoHandFifty = 250;
     const int ThreeHand = 300;
     const int FourHand = 400;
-
-    float TimeLimit;
-
-
+    #endregion
+   
+    // ÉäÉXÉg
     public List<float> InsertQ = new List<float>(capacity);
     public List<string> InsertQ_Formura = new List<string>(capacity);
-
+    
     public enum GameState {
     StartUp,
     InGame,
@@ -49,6 +49,8 @@ public class GmMg : MonoBehaviour
     public Text GameTimeText;
 
     public Text CorrectText;
+
+    float TimeLimit;
 
     float GameTime;
 
@@ -69,12 +71,12 @@ public class GmMg : MonoBehaviour
     bool CorrectCheck;
     bool ClearCheck;
     public bool AnsOK;
-
+    // âÊëúóﬁ
     [SerializeField] Image BackColar;
     [SerializeField] Image BackImage;
     [SerializeField] Sprite CorectImage;
     [SerializeField] Sprite NotCorectImage;
-
+    // SE
     [SerializeField] private AudioSource BGM;
     [SerializeField] private AudioSource Eff;
     [SerializeField] private AudioClip BGMEff;
@@ -108,6 +110,7 @@ public class GmMg : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // ÉQÅ[ÉÄÇÃèÛãµä«óù
         if (NowGameState == GameState.StartUp)
         {
             FirstCountDown();

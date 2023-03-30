@@ -31,6 +31,7 @@ public class PushNumber : MonoBehaviour
     {
         
     }
+    // 数字の入力処理
     public void PushBt(Text number)
     {
         if (Gm_Mg.NowGameState == GmMg.GameState.InGame)
@@ -42,6 +43,7 @@ public class PushNumber : MonoBehaviour
                 PushCnt++;
             }
     }
+    // 決定ボタンを押した際の処理
     public void PushBtDecade()
     {
         if (InsertAns != "")
@@ -55,6 +57,7 @@ public class PushNumber : MonoBehaviour
             }
         }
     }
+    // 文字クリア
     public void PushBtCancel()
     {
         Answer.text = "";

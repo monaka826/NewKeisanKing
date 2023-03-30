@@ -25,6 +25,7 @@ public class TlMg : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // ÉXÉRÉAï€ë∂
         if (BestScore < Score)
         {
             BestScore = Score;
